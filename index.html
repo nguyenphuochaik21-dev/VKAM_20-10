@@ -203,9 +203,34 @@
     .signature { display: block; margin-top: 9px; color: #9a5965; font-family: var(--sans); font-size: 13px; font-style: italic; font-weight: 600; }
     .noscript-wish { max-width: 420px; margin: 23px 0 0; padding: 19px 22px 17px; border: 1px solid rgba(238, 199, 165, .76); color: #593345; background: linear-gradient(145deg, #fff1e2, #ead2c1); box-shadow: 0 15px 42px rgba(10, 5, 12, .22); font-family: var(--sans); font-size: 15px; font-weight: 500; line-height: 1.85; }
     .tiny-note { margin: 15px 0 0; color: rgba(220, 200, 205, .49); font-size: 9px; letter-spacing: .04em; }
-    .gallery-cue { display: inline-flex; align-items: center; gap: 7px; color: rgba(213, 161, 111, .78); text-decoration: none; transition: color .2s ease; }
-    .gallery-cue-arrow { display: inline-block; color: var(--rose-light); font-size: 14px; line-height: 1; animation: cue-nudge 1.8s ease-in-out infinite; }
-    @media (min-width: 801px) { .gallery-cue { display: none; } }
+    .gallery-cue {
+      position: fixed;
+      z-index: 40;
+      bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+      left: 50%;
+      display: none;
+      min-height: 46px;
+      align-items: center;
+      gap: 9px;
+      padding: 0 17px;
+      border: 1px solid rgba(213, 161, 111, .72);
+      border-radius: 999px;
+      color: var(--ivory);
+      background: rgba(42, 23, 36, .94);
+      box-shadow: 0 8px 28px rgba(12, 6, 12, .42), inset 0 1px 0 rgba(255,255,255,.12);
+      backdrop-filter: blur(12px);
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .04em;
+      white-space: nowrap;
+      transform: translateX(-50%);
+      cursor: pointer;
+    }
+    .gallery-cue:not([hidden]) { animation: cue-appear .38s ease-out both; }
+    .gallery-cue[hidden] { display: none !important; }
+    .gallery-cue-arrow { display: inline-block; color: var(--rose-light); font-size: 17px; line-height: 1; animation: cue-nudge 1.8s ease-in-out infinite; }
+    @media (max-width: 800px) { .gallery-cue:not([hidden]) { display: inline-flex; } }
+    @media (min-width: 801px) { .gallery-cue { display: none !important; } }
 
     .floral-composition {
       position: relative;
@@ -356,6 +381,7 @@
     }
     @keyframes sparkle { 0%, 100% { opacity: .25; transform: scale(.72) rotate(0); } 50% { opacity: .95; transform: scale(1.22) rotate(35deg); } }
     @keyframes cue-nudge { 0%, 100% { transform: translateY(-1px); } 50% { transform: translateY(3px); } }
+    @keyframes cue-appear { from { opacity: 0; transform: translate(-50%, 10px); } to { opacity: 1; transform: translate(-50%, 0); } }
     @keyframes petal-drift {
       0% { transform: translate3d(0, 0, 0) rotate(0) scale(.45); opacity: 0; }
       12% { opacity: .92; }
@@ -384,7 +410,6 @@
       .wish { order: 5; max-width: 410px; margin-inline: auto; font-size: 14px; line-height: 1.6; }
       .wish.is-visible { max-height: 190px; margin-top: 8px; padding: 13px 16px 11px; }
       .noscript-wish { order: 5; max-width: 410px; margin: 8px auto 0; padding: 13px 16px 11px; font-size: 14px; line-height: 1.6; }
-      .tiny-note { order: 6; justify-self: center; margin-top: 7px; text-align: center; }
       .floral-composition { order: 4; width: min(calc(100% + 12px), 390px); margin: -15px auto -20px; }
       .bouquet-caption { bottom: 1%; }
       .bouquet-name { font-size: 11px; }
@@ -456,7 +481,7 @@
           </button>
           <noscript><p class="noscript-wish"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p></noscript>
           <p class="wish" id="wish-note" aria-live="polite"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p>
-          <p class="tiny-note gallery-cue"><span class="gallery-cue-arrow" aria-hidden="true">↓</span><span>Kéo xuống xem ảnh kỷ niệm</span></p>
+          <button class="gallery-cue" id="gallery-cue" type="button" hidden aria-controls="team-gallery" aria-label="Cuộn tới ảnh kỷ niệm của team VKAM"><span class="gallery-cue-arrow" aria-hidden="true">↓</span><span>Kéo xuống xem ảnh kỷ niệm</span></button>
         </div>
 
         <div class="floral-composition" id="floral-composition">
@@ -617,7 +642,7 @@
 
         </div>
 
-        <div class="team-gallery" aria-labelledby="team-gallery-title">
+        <div class="team-gallery" id="team-gallery" aria-labelledby="team-gallery-title">
           <div class="gallery-heading">
             <h2 class="gallery-title" id="team-gallery-title">Những mảnh ghép rạng rỡ</h2>
             <p class="gallery-note">Kỷ niệm cùng team VKAM · chạm ảnh để xem lớn</p>
@@ -677,6 +702,8 @@
     const buttonLabel = document.getElementById('button-label');
     const wishNote = document.getElementById('wish-note');
     const composition = document.getElementById('floral-composition');
+    const galleryCue = document.getElementById('gallery-cue');
+    const teamGallery = document.getElementById('team-gallery');
     const bouquetIndexLabel = document.getElementById('bouquet-index');
     const bouquetNameLabel = document.getElementById('bouquet-name');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -693,6 +720,13 @@
     let enteringBouquet;
     let bouquetIndex = 0;
 
+    function hideGalleryCueAtPhotos() {
+      if (teamGallery.getBoundingClientRect().top < window.innerHeight * .8) {
+        galleryCue.hidden = true;
+        window.removeEventListener('scroll', hideGalleryCueAtPhotos);
+      }
+    }
+
     function bloom() {
       if (bloomed) return;
       flowerArt.classList.add('is-bloomed');
@@ -702,6 +736,9 @@
       bloomButton.classList.add('is-dismissed');
       window.setTimeout(() => { bloomButton.hidden = true; }, 400);
       buttonLabel.textContent = 'Hoa đang nở gửi team VKAM';
+      galleryCue.hidden = false;
+      window.addEventListener('scroll', hideGalleryCueAtPhotos, { passive: true });
+      window.requestAnimationFrame(hideGalleryCueAtPhotos);
       bloomed = true;
       if (reduceMotion.matches) {
         flowerArt.classList.add('is-settled');
@@ -756,6 +793,9 @@
     }
 
     bloomButton.addEventListener('click', () => bloomed ? changeBouquet() : bloom());
+    galleryCue.addEventListener('click', () => {
+      teamGallery.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth', block: 'start' });
+    });
     flowerArt.addEventListener('click', () => bloomed ? changeBouquet() : bloom());
     const bloomOnScroll = () => {
       if (window.scrollY > 36) {
