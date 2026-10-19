@@ -204,8 +204,8 @@
     .noscript-wish { max-width: 420px; margin: 23px 0 0; padding: 19px 22px 17px; border: 1px solid rgba(238, 199, 165, .76); color: #593345; background: linear-gradient(145deg, #fff1e2, #ead2c1); box-shadow: 0 15px 42px rgba(10, 5, 12, .22); font-family: var(--sans); font-size: 15px; font-weight: 500; line-height: 1.85; }
     .tiny-note { margin: 15px 0 0; color: rgba(220, 200, 205, .49); font-size: 9px; letter-spacing: .04em; }
     .gallery-cue { display: inline-flex; align-items: center; gap: 7px; color: rgba(213, 161, 111, .78); text-decoration: none; transition: color .2s ease; }
-    .gallery-cue:hover { color: var(--ivory); }
     .gallery-cue-arrow { display: inline-block; color: var(--rose-light); font-size: 14px; line-height: 1; animation: cue-nudge 1.8s ease-in-out infinite; }
+    @media (min-width: 801px) { .gallery-cue { display: none; } }
 
     .floral-composition {
       position: relative;
@@ -456,7 +456,7 @@
           </button>
           <noscript><p class="noscript-wish"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p></noscript>
           <p class="wish" id="wish-note" aria-live="polite"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p>
-          <a class="tiny-note gallery-cue" href="#anh-ky-niem"><span class="gallery-cue-arrow" aria-hidden="true">↓</span><span>Kéo xuống xem ảnh kỷ niệm</span></a>
+          <p class="tiny-note gallery-cue"><span class="gallery-cue-arrow" aria-hidden="true">↓</span><span>Kéo xuống xem ảnh kỷ niệm</span></p>
         </div>
 
         <div class="floral-composition" id="floral-composition">
@@ -617,7 +617,7 @@
 
         </div>
 
-        <div class="team-gallery" id="anh-ky-niem" aria-labelledby="team-gallery-title">
+        <div class="team-gallery" aria-labelledby="team-gallery-title">
           <div class="gallery-heading">
             <h2 class="gallery-title" id="team-gallery-title">Những mảnh ghép rạng rỡ</h2>
             <p class="gallery-note">Kỷ niệm cùng team VKAM · chạm ảnh để xem lớn</p>
