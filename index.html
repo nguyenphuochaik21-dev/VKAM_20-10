@@ -1,11 +1,11 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#21111d">
-  <meta name="description" content="Một tấm thiệp 20/10 dành riêng cho Nguyễn Thùy Dương.">
-  <title>Gửi em, Thùy Dương — 20·10</title>
+  <meta name="description" content="Tấm thiệp 20/10 gửi lời chúc thân thương đến các chị em team VKAM.">
+  <title>Gửi chị em VKAM — 20·10</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
@@ -97,15 +97,24 @@
       text-transform: uppercase;
     }
     .topline span:last-child { color: var(--copper); }
+    .starfield { position: absolute; z-index: -1; inset: 0; overflow: hidden; pointer-events: none; }
+    .starfield span { position: absolute; color: #f2c996; text-shadow: 0 0 16px rgba(242, 201, 150, .48); animation: sparkle 4s ease-in-out infinite; }
+    .starfield span:nth-child(1) { top: 17%; left: 14%; font-size: 15px; }
+    .starfield span:nth-child(2) { top: 29%; left: 48%; font-size: 9px; animation-delay: -1.3s; }
+    .starfield span:nth-child(3) { top: 69%; left: 8%; font-size: 11px; animation-delay: -2.2s; }
+    .starfield span:nth-child(4) { top: 78%; left: 82%; font-size: 16px; animation-delay: -.8s; }
+    .starfield span:nth-child(5) { top: 12%; left: 88%; font-size: 10px; animation-delay: -2.8s; }
+    .starfield span:nth-child(6) { top: 54%; left: 95%; font-size: 8px; animation-delay: -1.8s; }
     .experience {
       position: relative;
       width: min(100%, 1260px);
-      min-height: min(790px, calc(100svh - 96px));
       display: grid;
       grid-template-columns: .83fr 1.17fr;
+      grid-template-rows: auto auto;
       align-items: center;
-      gap: clamp(12px, 3vw, 52px);
-      margin: 34px 0 22px;
+      column-gap: clamp(12px, 3vw, 52px);
+      row-gap: 12px;
+      margin: 24px 0 10px;
     }
     .greeting {
       position: relative;
@@ -194,10 +203,13 @@
     .signature { display: block; margin-top: 9px; color: #9a5965; font-family: var(--sans); font-size: 13px; font-style: italic; font-weight: 600; }
     .noscript-wish { max-width: 420px; margin: 23px 0 0; padding: 19px 22px 17px; border: 1px solid rgba(238, 199, 165, .76); color: #593345; background: linear-gradient(145deg, #fff1e2, #ead2c1); box-shadow: 0 15px 42px rgba(10, 5, 12, .22); font-family: var(--sans); font-size: 15px; font-weight: 500; line-height: 1.85; }
     .tiny-note { margin: 15px 0 0; color: rgba(220, 200, 205, .49); font-size: 9px; letter-spacing: .04em; }
+    .gallery-cue { display: inline-flex; align-items: center; gap: 7px; color: rgba(213, 161, 111, .78); text-decoration: none; transition: color .2s ease; }
+    .gallery-cue:hover { color: var(--ivory); }
+    .gallery-cue-arrow { display: inline-block; color: var(--rose-light); font-size: 14px; line-height: 1; animation: cue-nudge 1.8s ease-in-out infinite; }
 
     .floral-composition {
       position: relative;
-      width: min(100%, 700px);
+      width: min(100%, 560px);
       justify-self: center;
       perspective: 1200px;
       transform-style: preserve-3d;
@@ -266,28 +278,34 @@
     }
 
     .memory {
-      position: absolute;
-      z-index: 4;
-      width: clamp(104px, 12vw, 145px);
+      position: relative;
+      z-index: 1;
+      min-width: 0;
       margin: 0;
-      padding: 7px 7px 25px;
+      padding: 7px 7px 27px;
       border: 1px solid rgba(241, 214, 193, .46);
       background: linear-gradient(145deg, rgba(246, 232, 215, .94), rgba(224, 195, 180, .93));
       box-shadow: 0 20px 46px rgba(12, 6, 12, .38), 0 0 0 1px rgba(255,255,255,.12) inset;
       cursor: pointer;
       transition: transform .35s ease, box-shadow .35s ease;
     }
-    .memory:hover { z-index: 6; box-shadow: 0 27px 52px rgba(12, 6, 12, .48), 0 0 22px rgba(236, 169, 154, .16); }
-    .memory-one { top: 21%; left: -2%; transform: rotate(-9deg); }
-    .memory-one:hover { transform: rotate(-3deg) translateY(-7px) scale(1.04); }
-    .memory-two { right: 1%; bottom: 17%; transform: rotate(8deg); }
-    .memory-two:hover { transform: rotate(2deg) translateY(-7px) scale(1.04); }
-    .memory img { display: block; width: 100%; height: clamp(108px, 13vw, 158px); object-fit: cover; filter: saturate(.82) contrast(1.02); }
-    .memory-one img { object-position: 52% 44%; }
-    .memory-two img { object-position: 60% 25%; }
-    .memory figcaption { position: absolute; right: 6px; bottom: 6px; left: 6px; color: #543247; font-family: var(--serif); font-size: 11px; font-style: italic; text-align: center; }
+    .memory::before { position: absolute; z-index: 2; top: -11px; right: -7px; color: #efc78e; content: "✦"; font-size: 19px; text-shadow: 0 2px 10px rgba(17, 8, 16, .48), 0 0 12px rgba(242, 201, 150, .45); animation: sparkle 3.7s ease-in-out infinite; pointer-events: none; }
+    .memory:nth-child(3n)::before { animation-delay: -1.6s; }
+    .memory:hover { z-index: 3; transform: translateY(-6px) rotate(1deg); box-shadow: 0 27px 52px rgba(12, 6, 12, .48), 0 0 22px rgba(236, 169, 154, .16); }
+    .memory img { display: block; width: 100%; aspect-ratio: 1.18 / 1; object-fit: cover; filter: saturate(.88) contrast(1.02); }
+    .memory:nth-child(2) img { object-position: 50% 46%; }
+    .memory:nth-child(3) img { object-position: 50% 43%; }
+    .memory:nth-child(4) img { object-position: 50% 46%; }
+    .memory:nth-child(5) img { object-position: 50% 48%; }
+    .memory:nth-child(6) img { object-position: 50% 45%; }
+    .memory:nth-child(7) img { object-position: 50% 48%; }
+    .memory figcaption { margin-top: 7px; color: #543247; font-family: var(--sans); font-size: clamp(9px, .9vw, 12px); font-style: normal; font-weight: 600; line-height: 1.3; text-align: center; }
     .memory-open { display: block; width: 100%; padding: 0; border: 0; background: transparent; cursor: zoom-in; }
-    .memory-hint { position: absolute; right: 0; bottom: -22px; color: rgba(243, 220, 202, .6); font-size: 8px; letter-spacing: .13em; text-transform: uppercase; white-space: nowrap; }
+    .team-gallery { position: relative; z-index: 2; grid-column: 1 / -1; width: 100%; margin-top: 0; }
+    .gallery-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin-bottom: 13px; }
+    .gallery-title { margin: 0; color: var(--rose-light); font-family: var(--serif); font-size: clamp(17px, 2vw, 23px); font-weight: 400; }
+    .gallery-note { margin: 0; color: rgba(220, 200, 205, .62); font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 1.25vw, 17px); }
     .corner-seal { position: absolute; right: clamp(40px, 8vw, 112px); bottom: clamp(31px, 5vh, 53px); display: flex; align-items: center; gap: 9px; color: rgba(246, 232, 215, .53); font-family: var(--serif); font-size: 12px; font-style: italic; }
     .corner-seal::before { width: 23px; height: 1px; background: var(--copper); content: ""; }
 
@@ -304,7 +322,7 @@
     dialog.photo-dialog::backdrop { background: rgba(13, 7, 13, .78); backdrop-filter: blur(8px); }
     .dialog-close { position: absolute; top: 17px; right: 17px; width: 38px; height: 38px; border: 1px solid rgba(255,255,255,.55); border-radius: 50%; color: white; background: rgba(25, 13, 23, .7); font-size: 22px; cursor: pointer; }
     .photo-dialog img { display: block; max-width: 100%; max-height: calc(88svh - 70px); margin: auto; object-fit: contain; }
-    .dialog-caption { margin: 11px 0 0; color: var(--rose-light); font-family: var(--serif); font-size: 17px; font-style: italic; text-align: center; }
+    .dialog-caption { margin: 11px 0 0; color: var(--rose-light); font-family: var(--sans); font-size: 15px; font-style: normal; font-weight: 600; line-height: 1.5; text-align: center; }
 
     @keyframes bloom-open {
       0% { transform: scale(.34) rotate(-16deg); }
@@ -337,6 +355,7 @@
       50% { opacity: .95; transform: scale(1.035); }
     }
     @keyframes sparkle { 0%, 100% { opacity: .25; transform: scale(.72) rotate(0); } 50% { opacity: .95; transform: scale(1.22) rotate(35deg); } }
+    @keyframes cue-nudge { 0%, 100% { transform: translateY(-1px); } 50% { transform: translateY(3px); } }
     @keyframes petal-drift {
       0% { transform: translate3d(0, 0, 0) rotate(0) scale(.45); opacity: 0; }
       12% { opacity: .92; }
@@ -347,26 +366,32 @@
       .scene::after { inset: 12px; }
       .ambient-orb { top: 54%; left: 52%; width: min(108vw, 720px); }
       .topline { top: 30px; left: 31px; right: 31px; font-size: 8px; letter-spacing: .16em; }
+      .starfield span:nth-child(1) { top: 13%; left: 8%; }
+      .starfield span:nth-child(2) { top: 33%; left: 93%; }
+      .starfield span:nth-child(3) { top: 59%; left: 4%; }
+      .starfield span:nth-child(4) { top: 86%; left: 91%; }
+      .starfield span:nth-child(5) { top: 95%; left: 10%; }
+      .starfield span:nth-child(6) { display: none; }
       .experience { width: min(100%, 620px); min-height: 0; grid-template-columns: 1fr; gap: 0; margin: 0 auto; padding: 0 0 24px; }
-      .greeting { order: 0; padding: 0; text-align: center; }
-      .eyebrow { justify-content: center; margin-bottom: 12px; font-size: 9px; }
+      .greeting { display: contents; order: 0; padding: 0; text-align: center; }
+      .greeting noscript { order: 5; }
+      .eyebrow { order: 0; justify-content: center; margin-bottom: 10px; font-size: 9px; }
       .eyebrow::before { width: 20px; }
-      h1 { margin: 0 auto 10px; font-size: clamp(50px, 12vw, 76px); }
+      h1 { order: 1; margin: 0 auto 8px; font-size: clamp(50px, 12vw, 76px); }
       h1 .soft { font-size: .65em; }
-      .intro { max-width: 360px; margin: 0 auto 17px; font-size: 12px; line-height: 1.65; }
-      .bloom-button { min-height: 48px; padding-inline: 18px; font-size: 10px; }
-      .wish { max-width: 410px; margin-inline: auto; font-size: 16px; }
-      .wish.is-visible { margin-top: 15px; }
-      .tiny-note { margin-top: 10px; }
-      .floral-composition { order: 1; width: min(100%, 510px); margin: -5px auto -9px; }
+      .intro { order: 2; max-width: 360px; margin: 0 auto 8px; font-size: 12px; line-height: 1.6; }
+      .bloom-button { order: 3; justify-self: center; min-height: 46px; padding-inline: 18px; font-size: 10px; }
+      .wish { order: 5; max-width: 410px; margin-inline: auto; font-size: 14px; line-height: 1.6; }
+      .wish.is-visible { max-height: 190px; margin-top: 8px; padding: 13px 16px 11px; }
+      .noscript-wish { order: 5; max-width: 410px; margin: 8px auto 0; padding: 13px 16px 11px; font-size: 14px; line-height: 1.6; }
+      .tiny-note { order: 6; justify-self: center; margin-top: 7px; text-align: center; }
+      .floral-composition { order: 4; width: min(calc(100% + 12px), 390px); margin: -15px auto -20px; }
       .bouquet-caption { bottom: 1%; }
       .bouquet-name { font-size: 11px; }
-      .memory { width: clamp(88px, 21vw, 125px); padding: 5px 5px 21px; }
-      .memory img { height: clamp(82px, 20vw, 119px); }
-      .memory-one { top: 20%; left: -2%; }
-      .memory-two { right: -1%; bottom: 18%; }
-      .memory figcaption { font-size: 9px; }
-      .memory-hint { display: none; }
+      .team-gallery { order: 7; margin-top: 14px; }
+      .gallery-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+      .memory { padding: 5px 5px 23px; }
+      .memory figcaption { font-size: 10px; }
       .corner-seal { right: 30px; bottom: 26px; font-size: 10px; }
     }
     @media (max-width: 430px) {
@@ -376,21 +401,31 @@
       .eyebrow { margin-bottom: 9px; font-size: 8px; }
       h1 { font-size: clamp(48px, 14vw, 63px); }
       .intro { max-width: 320px; font-size: 11px; }
-      .floral-composition { width: calc(100% + 26px); margin-left: -13px; }
-      .memory-one { top: 18%; left: 8px; }
-      .memory-two { right: 8px; bottom: 17%; }
-      .memory { width: 92px; }
-      .memory img { height: 88px; }
-      .memory figcaption { font-size: 8px; }
-      .wish { font-size: 15px; }
+      .floral-composition { width: min(calc(100% + 12px), 370px); margin: -13px auto -20px; }
+      .gallery-heading { display: block; text-align: center; }
+      .gallery-note { margin-top: 5px; font-size: 8px; }
+      .gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .memory { padding-bottom: 25px; }
+      .memory figcaption { font-size: 11px; }
+      .wish { font-size: 14px; }
       .corner-seal { right: 25px; bottom: 23px; }
     }
+    @media (max-height: 900px) and (min-width: 801px) {
+      .experience { row-gap: 8px; margin-block: 18px 4px; }
+      .floral-composition { width: min(100%, 560px, 58vh); }
+      .greeting { padding-block: 10px; }
+      .eyebrow { margin-bottom: 15px; }
+      h1 { font-size: clamp(56px, 6.5vw, 84px); }
+      .intro { margin-bottom: 16px; }
+      .gallery-heading { margin-bottom: 9px; }
+      .memory img { aspect-ratio: 1.45 / 1; }
+    }
     @media (max-height: 740px) and (min-width: 801px) {
-      .experience { min-height: 630px; }
-      .floral-composition { width: min(100%, 610px); }
+      .experience { row-gap: 7px; margin-block: 14px 6px; }
+      .floral-composition { width: min(100%, 44vw, 48vh); }
       h1 { font-size: clamp(58px, 6.5vw, 82px); }
       .intro { margin-bottom: 18px; }
-      .scene { padding-block: 21px; }
+      .scene { padding-block: 14px; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
@@ -408,19 +443,20 @@
   <main>
     <section class="scene" id="loi-chuc" aria-labelledby="greeting-title">
       <div class="ambient-orb" aria-hidden="true"></div>
-      <div class="topline"><span>20 tháng 10 · gửi em</span><span>một điều thật dịu dàng</span></div>
+      <div class="starfield" aria-hidden="true"><span>✦</span><span>✧</span><span>✦</span><span>✧</span><span>✦</span><span>✧</span></div>
+      <div class="topline"><span>20 tháng 10 · team VKAM</span><span>gửi chị em thân mến</span></div>
 
       <div class="experience">
         <div class="greeting">
-          <p class="eyebrow">Một tấm thiệp chỉ dành cho em</p>
-          <h1 id="greeting-title"><span class="soft">Gửi em,</span>Thùy Dương</h1>
-          <p class="intro">Dương à, mong em luôn giữ nụ cười ấy, gặp thật nhiều niềm vui và luôn dịu dàng với chính mình.</p>
+          <p class="eyebrow">Một lời chúc gửi chị em VKAM</p>
+          <h1 id="greeting-title"><span class="soft">Gửi chị em</span>VKAM</h1>
+          <p class="intro">Cảm ơn chị em đã làm mỗi hành trình cùng team thêm vui và đầy màu sắc. Chúc những đóa hoa VKAM luôn rạng rỡ theo cách riêng của mình.</p>
           <button class="bloom-button" id="bloom-button" type="button" aria-expanded="false" aria-controls="wish-note">
             <span id="button-label">Chạm để hoa nở</span><span class="button-mark" aria-hidden="true">✳</span>
           </button>
-          <noscript><p class="noscript-wish"><span class="wish-kicker">Lời nhắn gửi Dương · 20/10</span>Thùy Dương à, mong em luôn rạng rỡ, tự tin và gặp thật nhiều điều dịu dàng. Chúc em hôm nay thật vui, những ngày bình thường cũng luôn có điều khiến em mỉm cười.<span class="signature">Thương em nhiều nhé ♡</span></p></noscript>
-          <p class="wish" id="wish-note" aria-live="polite"><span class="wish-kicker">Lời nhắn gửi Dương · 20/10</span>Thùy Dương à, mong em luôn rạng rỡ, tự tin và gặp thật nhiều điều dịu dàng. Chúc em hôm nay thật vui, những ngày bình thường cũng luôn có điều khiến em mỉm cười.<span class="signature">Thương em nhiều nhé ♡</span></p>
-          <p class="tiny-note">Một bó hoa dành riêng cho em</p>
+          <noscript><p class="noscript-wish"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p></noscript>
+          <p class="wish" id="wish-note" aria-live="polite"><span class="wish-kicker">Lời nhắn gửi chị em VKAM · 20/10</span>Chúc chị em VKAM luôn rạng rỡ, tự tin và gặp nhiều niềm vui. Mong mỗi ngày bên nhau đều có tiếng cười, nhiều điều tốt đẹp và những khoảnh khắc thật đáng nhớ.<span class="signature">Thân mến, gửi cả team ♡</span></p>
+          <a class="tiny-note gallery-cue" href="#anh-ky-niem"><span class="gallery-cue-arrow" aria-hidden="true">↓</span><span>Kéo xuống xem ảnh kỷ niệm</span></a>
         </div>
 
         <div class="floral-composition" id="floral-composition">
@@ -575,29 +611,61 @@
           </svg>
           <div class="bouquet-caption" aria-live="polite">
             <span class="bouquet-index" id="bouquet-index"></span>
-            <span class="bouquet-name" id="bouquet-name"></span>
-            <span class="bouquet-hint"></span>
+            <span class="bouquet-name" id="bouquet-name">Hồng phấn dịu dàng</span>
+            <span class="bouquet-hint">CHẠM BÓ HOA ĐỂ ĐỔI SẮC</span>
           </div>
 
-          <figure class="memory memory-one">
-            <button type="button" class="memory-open" aria-label="Phóng to ảnh Dương đang nháy mắt" data-image="image/1792414860248_2061814051399382203_5258198706137302494_fcde6372b8246ca7dab948e1d72c6c2a.jpg" data-caption="Một chiếc nháy mắt thật tinh nghịch ♡">
-              <img src="image/1792414860248_2061814051399382203_5258198706137302494_fcde6372b8246ca7dab948e1d72c6c2a.jpg" alt="Dương đang nháy mắt đáng yêu" fetchpriority="high">
-            </button>
-            <figcaption>một chiếc nháy mắt ♡</figcaption>
-          </figure>
-          <figure class="memory memory-two">
-            <button type="button" class="memory-open" aria-label="Phóng to ảnh Thùy Dương" data-image="image/1792414860296_2061814051399382203_5258198706137302494_a2f5c32c89f7ca0f248f1742a5c87134.jpg" data-caption="Mong em lúc nào cũng cười thật tươi ♡">
-              <img src="image/1792414860296_2061814051399382203_5258198706137302494_a2f5c32c89f7ca0f248f1742a5c87134.jpg" alt="Một khoảnh khắc dễ thương của Dương">
-            </button>
-            <figcaption>em cười thật xinh ♡</figcaption>
-          </figure>
-          <span class="memory-hint">chạm ảnh để xem gần hơn</span>
+        </div>
+
+        <div class="team-gallery" id="anh-ky-niem" aria-labelledby="team-gallery-title">
+          <div class="gallery-heading">
+            <h2 class="gallery-title" id="team-gallery-title">Những mảnh ghép rạng rỡ</h2>
+            <p class="gallery-note">Kỷ niệm cùng team VKAM · chạm ảnh để xem lớn</p>
+          </div>
+          <div class="gallery-grid">
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh đồng nghiệp dưới tán phượng" data-image="image/1792420597116_2061814051399382203_5258198706137302494_d88a4a2361928c669706692e7f6d332e.jpg" data-caption="Nơi đâu có team, nơi đó có nắng hạ">
+                <img src="image/1792420597116_2061814051399382203_5258198706137302494_d88a4a2361928c669706692e7f6d332e.jpg" alt="Đồng nghiệp dạo bước dưới tán phượng đỏ" loading="lazy">
+              </button>
+              <figcaption>Vui cùng nhau</figcaption>
+            </figure>
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh đồng nghiệp trong chuyến đi" data-image="image/1792420597139_2061814051399382203_5258198706137302494_f225ba2cff3b8e46f2bf0ff6ea2c2312.jpg" data-caption="Cùng nhau trên mọi hành trình">
+                <img src="image/1792420597139_2061814051399382203_5258198706137302494_f225ba2cff3b8e46f2bf0ff6ea2c2312.jpg" alt="Đồng nghiệp cùng nhau trong chuyến đi" loading="lazy">
+              </button>
+              <figcaption>Cùng nhau đi xa</figcaption>
+            </figure>
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh đồng nghiệp bên biển" data-image="image/1792420789259_2061814051399382203_5258198706137302494_bf945c5bec0fb2f863afa0272d197b94.jpg" data-caption="Sạc đầy năng lượng để tiếp tục follow đơn hàng">
+                <img src="image/1792420789259_2061814051399382203_5258198706137302494_bf945c5bec0fb2f863afa0272d197b94.jpg" alt="Đồng nghiệp mỉm cười bên biển xanh" loading="lazy">
+              </button>
+              <figcaption>Biển xanh nắng vàng</figcaption>
+            </figure>
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh đồng nghiệp vui đùa cùng nhau" data-image="image/1792420809155_2061814051399382203_5258198706137302494_809d09fc9e30080394474b61c143505f.jpg" data-caption="Luôn có nhau trong những khoảnh khắc vui">
+                <img src="image/1792420809155_2061814051399382203_5258198706137302494_809d09fc9e30080394474b61c143505f.jpg" alt="Hai đồng nghiệp vui đùa cùng nhau trong chuyến đi" loading="lazy">
+              </button>
+              <figcaption>Luôn có nhau</figcaption>
+            </figure>
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh tập thể team building" data-image="image/1792420837334_2061814051399382203_5258198706137302494_7b83999846e54563d9f9efebcb573acb.jpg" data-caption="VKAM rực rỡ trong ngày team building">
+                <img src="image/1792420837334_2061814051399382203_5258198706137302494_7b83999846e54563d9f9efebcb573acb.jpg" alt="Cả nhóm chụp ảnh trong hoạt động team building" loading="lazy">
+              </button>
+              <figcaption>VKAM bên nhau</figcaption>
+            </figure>
+            <figure class="memory">
+              <button type="button" class="memory-open" aria-label="Phóng to ảnh mọi người cùng dùng bữa" data-image="image/1792420913850_2061814051399382203_5258198706137302494_11a4d6063914a7a510d49afe58dc23ce.jpg" data-caption="Thêm một bữa vui cùng team">
+                <img src="image/1792420913850_2061814051399382203_5258198706137302494_11a4d6063914a7a510d49afe58dc23ce.jpg" alt="Các đồng nghiệp quây quần bên bữa ăn" loading="lazy">
+              </button>
+              <figcaption>Bữa vui cùng team</figcaption>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
   </main>
 
-  <dialog class="photo-dialog" id="photo-dialog" aria-label="Ảnh của Thùy Dương">
+  <dialog class="photo-dialog" id="photo-dialog" aria-label="Ảnh kỷ niệm của team VKAM">
     <button class="dialog-close" id="dialog-close" type="button" aria-label="Đóng ảnh">×</button>
     <img id="dialog-image" src="" alt="">
     <p class="dialog-caption" id="dialog-caption"></p>
@@ -613,9 +681,9 @@
     const bouquetNameLabel = document.getElementById('bouquet-name');
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const bouquetStyles = [
-      { id: 'rose', name: '', label: 'hoa hồng màu hồng phấn' },
-      { id: 'peony', name: '', label: 'hoa mẫu đơn sắc tím' },
-      { id: 'hydrangea', name: '', label: 'hoa cẩm tú cầu màu xanh lam' }
+      { id: 'rose', name: 'Hồng phấn dịu dàng', label: 'hoa hồng màu hồng phấn' },
+      { id: 'peony', name: 'Mẫu đơn tím mộng mơ', label: 'hoa mẫu đơn sắc tím' },
+      { id: 'hydrangea', name: 'Cẩm tú cầu xanh tái chanh', label: 'hoa cẩm tú cầu màu xanh lam' }
     ];
     let bloomed = false;
     let settleTimer;
@@ -633,7 +701,7 @@
       bloomButton.setAttribute('aria-expanded', 'true');
       bloomButton.classList.add('is-dismissed');
       window.setTimeout(() => { bloomButton.hidden = true; }, 400);
-      buttonLabel.textContent = 'Hoa đang nở dành cho em';
+      buttonLabel.textContent = 'Hoa đang nở gửi team VKAM';
       bloomed = true;
       if (reduceMotion.matches) {
         flowerArt.classList.add('is-settled');
@@ -669,7 +737,7 @@
       const bouquet = bouquetStyles[bouquetIndex];
       flowerArt.dataset.style = bouquet.id;
       flowerArt.setAttribute('aria-label', `Bó ${bouquet.label} được gói trong giấy màu kem và ánh đồng`);
-      bouquetIndexLabel.textContent = ` `;
+      bouquetIndexLabel.textContent = ``;
       bouquetNameLabel.textContent = bouquet.name;
       const incoming = flowerArt.querySelector(`.style-${bouquet.id}`);
       window.clearTimeout(bouquetEntryTimer);
